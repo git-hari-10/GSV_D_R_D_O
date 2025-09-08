@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Zap, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export function Footer() {
@@ -29,19 +29,42 @@ export function Footer() {
             </Link>
           </div>
         </div>
-        
+
         <div className="flex space-x-6 mt-6 md:mt-0">
-          <a href="#" className="text-muted-foreground hover:text-foreground">
-            <Facebook className="h-5 w-5" />
+          <a
+              href="https://facebook.com/YourPage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition"
+          >
+            <Facebook className="h-5 w-5" style={{ color: "#1877F2" }} />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground">
-            <Twitter className="h-5 w-5" />
+
+          <a
+              href="https://twitter.com/YourPage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition"
+          >
+            <Twitter className="h-5 w-5" style={{ color: "#1DA1F2" }} />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground">
-            <Instagram className="h-5 w-5" />
+
+          <a
+              href="https://instagram.com/gsv_drone"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition"
+          >
+            <Instagram className="h-5 w-5" style={{ color: "#E1306C" }} />
           </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground">
-            <Linkedin className="h-5 w-5" />
+
+          <a
+              href="https://linkedin.com/company/YourCompanyPage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition"
+          >
+            <Linkedin className="h-5 w-5" style={{ color: "#0A66C2" }} />
           </a>
         </div>
       </div>
