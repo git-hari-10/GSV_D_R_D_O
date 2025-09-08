@@ -10,6 +10,8 @@
     --background: 0 0% 100%;
     --foreground: 220 15% 20%;
 
+    --nav-height: 5em;
+
     --card: 0 0% 100%;
     --card-foreground: 220 15% 20%;
 
@@ -117,6 +119,26 @@
     background: linear-gradient(180deg, hsl(var(--sky-start)), hsl(var(--sky-end)));
   }
 
+  .gradient-hero-extended {
+    background: linear-gradient(
+            135deg,
+            hsl(200 100% 85%) 0%,
+            hsl(220 100% 65%) 25%,
+            hsl(260 100% 70%) 50%,
+            hsl(340 100% 65%) 75%,
+            hsl(320 100% 75%) 100%
+    );
+  }
+
+  .gradient-hero-tricolor {
+    background: linear-gradient(
+            180deg,
+            hsl(30, 100%, 50%) 0%,   /* Orange */
+            hsl(0, 0%, 100%) 50%,    /* White */
+            hsl(120, 60%, 40%) 100%  /* Green */
+    );
+  }
+
   .glass-effect {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -128,6 +150,25 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .text-gradient-grey {
+    background: linear-gradient(
+            360deg,
+            #ffffff 0%,
+            #cbd5e1 25%,
+            #ffffff 50%,
+            #cbd5e1 75%,
+            #ffffff 100%
+
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-offset {
+    padding-top: var(--nav-height);
   }
 }
 
