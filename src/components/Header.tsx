@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
 
 
@@ -68,10 +68,8 @@ export function Header() {
           <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <span className="text-xl font-bold">GSV Drones</span>
+                <img src={logo} alt="Company logo" className="w-10 h-10 rounded-full" />
+                <span className="text-xl font-bold text-foreground">GSV Drones</span>
               </Link>
               <button
                 type="button"
