@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Zap, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,10 +8,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center md:space-x-12">
           <div className="flex items-center space-x-2 mb-6 md:mb-0">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Zap className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold">SkyTech Drones</span>
+            <Link to="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
+              <img src={logo} alt="Company logo" className="w-10 h-10 rounded-full" />
+            </Link>
+            <span className="text-xl font-bold">GSV Drones</span>
           </div>
           
           <div className="flex flex-wrap space-x-6">
