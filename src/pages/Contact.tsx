@@ -69,17 +69,17 @@ export default function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
+                      <Input id="firstName" placeholder="Name" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
+                      <Input id="lastName" placeholder="Surname" />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@company.com" />
+                    <Input id="email" type="email" placeholder="example@gmail.com" />
                   </div>
                   
                   <div className="space-y-2">
@@ -89,7 +89,7 @@ export default function Contact() {
                   
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
+                    <Input id="phone" type="tel" placeholder="+91 9876543210" />
                   </div>
                   
                   <div className="space-y-2">
@@ -139,27 +139,23 @@ export default function Contact() {
                 <CardContent className="space-y-2">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
-                    <span className="font-medium">8:00 AM - 6:00 PM PST</span>
+                    <span className="font-medium">10:00 AM - 5:00 PM PST</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="font-medium">9:00 AM - 2:00 PM PST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
+                    <span>Saturday & Sunday</span>
                     <span className="font-medium">Closed</span>
                   </div>
                   <div className="pt-4 border-t border-border">
                     <p className="text-sm text-muted-foreground">
                       For urgent technical support, our 24/7 hotline is available at 
-                      <span className="font-medium text-foreground"> +1 (555) 911-TECH</span>
+                      <span className="font-medium text-foreground"> +91 9150115723</span>
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Office Locations */}
-              <div className="space-y-6">
+              {/*<div className="space-y-6">
                 <h3 className="text-xl font-semibold">Our Offices</h3>
                 {offices.map((office, index) => (
                   <Card key={index} className="border-0 shadow-lg">
@@ -182,14 +178,14 @@ export default function Contact() {
                     </CardContent>
                   </Card>
                 ))}
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-muted">
+      {/*<section className="py-24 bg-muted">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
@@ -228,7 +224,7 @@ export default function Contact() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
     </div>
   );
 }
