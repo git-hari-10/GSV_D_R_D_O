@@ -54,19 +54,19 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-6 text-justify">
                 From <strong>Naickkan Thoppu, Tamil Nadu</strong>, the GSV Drone Family made
                 history as <strong>India’s first DGCA-certified drone family</strong>, holding
                 both Small and Medium Rotorcraft Pilot Certificates. What began as a passion
                 has grown into a national milestone.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-6 text-justify">
                 United by the belief that <strong>“flying together is our strength”</strong>,
                 our family combines expertise in piloting, engineering, and instruction.
                 Together, we drive innovation in <em>smart agriculture, aerial surveying,
                 youth mentorship, and drone awareness</em>.
               </p>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-muted-foreground text-justify">
                 Today, we stand as <strong>pioneers in India’s drone revolution</strong>.
                 Our vision is to promote safe, responsible, and innovative drone practices
                 while collaborating with farmers, institutions, and startups to empower the
