@@ -71,7 +71,7 @@ export default function News() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      /*<section className="py-24 gradient-hero">
+      <section className="py-24 gradient-hero">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold text-white mb-6">News & Insights</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
