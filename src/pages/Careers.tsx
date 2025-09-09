@@ -102,24 +102,24 @@ export default function Careers() {
                 From flexible work arrangements to cutting-edge projects, we provide an 
                 environment where creativity thrives and careers flourish.
               </p>
-              <div className="grid grid-cols-2 gap-6">
+              {/*<div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">200+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">0+</div>
                   <div className="text-sm text-muted-foreground">Team Members</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">0+</div>
                   <div className="text-sm text-muted-foreground">Countries</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">95%</div>
+                  <div className="text-3xl font-bold text-primary mb-2">0%</div>
                   <div className="text-sm text-muted-foreground">Employee Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">4.8★</div>
+                  <div className="text-3xl font-bold text-primary mb-2">0★</div>
                   <div className="text-sm text-muted-foreground">Glassdoor Rating</div>
                 </div>
-              </div>
+              </div>*/}
             </div>
             <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
               <Users className="w-24 h-24 text-muted-foreground" />
