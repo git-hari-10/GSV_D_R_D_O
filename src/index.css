@@ -154,13 +154,10 @@
 
   .text-gradient-grey {
     background: linear-gradient(
-            360deg,
-            #ffffff 0%,
-            #cbd5e1 25%,
-            #ffffff 50%,
-            #cbd5e1 75%,
-            #ffffff 100%
-
+            180deg,
+            #000080 0%,
+            #1a1a9f 20%,
+            #18a80b 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
