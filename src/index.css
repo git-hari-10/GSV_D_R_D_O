@@ -160,6 +160,44 @@
   .hero-arrow {
     @apply p-2 rounded-full bg-black/40 hover:bg-black/60 transition;
   }
+
+  .people-slider-track {
+    will-change: transform;
+  }
+
+  .person-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  .person-avatar img {
+    transition: transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .24s ease;
+  }
+
+  .person-avatar img:hover {
+    transform: rotate(-6deg) scale(1.03);
+    box-shadow: 0 12px 30px rgba(2,6,23,0.32);
+  }
+
+  /* Video panel */
+  .video-panel video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Arrows (re-use hero style but scoped) */
+  .people-arrow {
+    transition: background .16s ease, transform .12s ease;
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 1024px) {
+    .person-card { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .person-avatar img { width: 88px; height: 88px; }
+  }
 }
 
 @layer base {
