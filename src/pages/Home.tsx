@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Shield, Zap, Settings, Camera, Wifi, Battery } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/home_background.png";
+import heroImage from "@/assets/homeback_plane.png";
 import productImage from "@/assets/product-drone.jpg";
 
 export default function Home() {
