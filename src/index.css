@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Drone Website Design System - All colors in HSL */
-
 @layer base {
   :root {
-    /* Core brand colors inspired by sky and technology */
     --background: 0 0% 100%;
     --foreground: 220 15% 20%;
 
@@ -18,29 +15,23 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 20%;
 
-    /* Primary: Deep sky blue */
     --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 210 100% 70%;
     --primary-dark: 210 100% 30%;
 
-    /* Secondary: Clean tech gray */
     --secondary: 220 10% 96%;
     --secondary-foreground: 220 15% 20%;
 
-    /* Muted: Soft neutrals */
     --muted: 220 10% 96%;
     --muted-foreground: 220 10% 45%;
 
-    /* Accent: Cyan tech highlight */
     --accent: 190 100% 50%;
     --accent-foreground: 0 0% 100%;
 
-    /* Hero gradient colors */
     --hero-start: 210 100% 50%;
     --hero-end: 240 100% 30%;
-    
-    /* Sky gradient */
+
     --sky-start: 200 100% 80%;
     --sky-end: 220 100% 60%;
 
@@ -52,73 +43,38 @@
     --ring: 210 100% 50%;
 
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
-/* Custom gradients and utilities */
 @layer utilities {
+  /* Hero gradient background */
   .gradient-hero {
     background: linear-gradient(135deg, hsl(var(--hero-start)), hsl(var(--hero-end)));
   }
-  
-  .gradient-sky {
-    background: linear-gradient(180deg, hsl(var(--sky-start)), hsl(var(--sky-end)));
-  }
 
+  /* Used in CTA Section */
   .gradient-hero-extended {
     background: linear-gradient(
             135deg,
@@ -130,21 +86,49 @@
     );
   }
 
+  /* Overlay on hero background images */
   .gradient-hero-tricolor {
     background: linear-gradient(
             180deg,
-            hsl(30, 100%, 50%) 0%,   /* Orange */
-            hsl(0, 0%, 100%) 50%,    /* White */
-            hsl(120, 60%, 40%) 100%  /* Green */
+            rgba(15, 23, 42, 0.6) 0%,
+            rgba(13, 148, 136, 0.6) 100%
     );
   }
 
+  /* Glass effect (optional for cards/sections) */
   .glass-effect {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
+  /* Animated gradient text (used on "Research & Development") */
+  .animated-gradient-text {
+    background: linear-gradient(
+            90deg,
+            #3b82f6,
+            #06b6d4,
+            #ec4899,
+            #8b5cf6,
+            #3b82f6
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 8s infinite linear;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Simple blue gradient text (used on "(R&D) Organization") */
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     -webkit-background-clip: text;
@@ -152,20 +136,67 @@
     background-clip: text;
   }
 
-  .text-gradient-grey {
-    background: linear-gradient(
-            180deg,
-            #000080 0%,
-            #1a1a9f 20%,
-            #18a80b 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
+  /* Page offset for navbar */
   .page-offset {
     padding-top: var(--nav-height);
+  }
+
+  /* ===== Hero Slider Styles ===== */
+  .hero-slider-track {
+    height: 100%;
+    display: flex;
+    will-change: transform;
+  }
+
+  .hero-slide {
+    height: 100%;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  /* Navigation arrows */
+  .hero-arrow {
+    @apply p-2 rounded-full bg-black/40 hover:bg-black/60 transition;
+  }
+
+  .people-slider-track {
+    will-change: transform;
+  }
+
+  .person-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  .person-avatar img {
+    transition: transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .24s ease;
+  }
+
+  .person-avatar img:hover {
+    transform: rotate(-6deg) scale(1.03);
+    box-shadow: 0 12px 30px rgba(2,6,23,0.32);
+  }
+
+  /* Video panel */
+  .video-panel video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Arrows (re-use hero style but scoped) */
+  .people-arrow {
+    transition: background .16s ease, transform .12s ease;
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 1024px) {
+    .person-card { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .person-avatar img { width: 88px; height: 88px; }
   }
 }
 
