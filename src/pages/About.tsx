@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Award, Globe, Target, ChevronLeft, ChevronRight } from "lucide-react";
+// Employee profile imports
 import aboutImage from "@/assets/About/about.png";
 import droneSupportEngineer from "@/assets/About/Selvam.png";
 import gcsSoftwareDev from "@/assets/About/Harish.png";
@@ -9,6 +10,24 @@ import associateSoftwareDev from "@/assets/About/krithika.png";
 import droneSupportEngineer2 from "@/assets/About/kumaran.png";
 import hardwareLead from "@/assets/About/thanigai.png";
 import founder from "@/assets/About/vasanth.png";
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// Gallery imports (your provided files)
+import gallery1 from "@/assets/About/Galleryassests/IMG_2299 (2).jpg";
+import gallery2 from "@/assets/About/Galleryassests/IMG_2303 (2).jpg";
+import gallery3 from "@/assets/About/Galleryassests/working1.jpg";
+import gallery4 from "@/assets/About/Galleryassests/img1.jpg";
+import gallery5 from "@/assets/About/Galleryassests/IMG_2313 (2).jpg";
+import gallery6 from "@/assets/About/Galleryassests/IMG_2305 (2).jpg";
+import gallery7 from "@/assets/About/Galleryassests/IMG_2316 (2).jpg";
+import gallery8 from "@/assets/About/Galleryassests/IMG_2317 (2).jpg";
+import gallery9 from "@/assets/About/Galleryassests/IMG_2324 (2).jpg";
+import gallery10 from "@/assets/About/Galleryassests/IMG_2324 (3).jpg";
 
 type Person = {
   id: string;
@@ -39,7 +58,7 @@ export default function About(): JSX.Element {
       id: "emp-1",
       name: "Mr. S. Vasanth",
       designation: "Founder • GSV Drones",
-      role: "Founder of GSV Drone Family, leading R&D initiatives and building innovative UAV solutions.",
+      role: "Founder of GSV Drone Family, spearheading research and development in advanced aerial technologies. Leading the creation of innovative UAV solutions that shape the future of drone applications.",
       avatar: `${founder}`,
       videoUrl: "/employees/mother-intro.mp4",
     },
@@ -93,26 +112,52 @@ export default function About(): JSX.Element {
     },
   ];
 
-  // --- Carousel state (manual only) ---
-  const [index, setIndex] = useState<number>(0);
-  const [openVideoFor, setOpenVideoFor] = useState<string | null>(null);
+  // gallery array using your imports
+  const gallery = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10];
+
+  // Swiper / manual carousel state
+  const [index, setIndex] = useState<number>(0); // for manual employee carousel (left as-is)
+  const [activeIndex, setActiveIndex] = useState<number>(0); // active slide in swiper
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null); // null = closed
   const trackRef = useRef<HTMLDivElement | null>(null);
   const transitionMs = 600;
 
-  // Move to previous (wraps)
-  const prev = () => {
-    setIndex((i) => (i - 1 + employees.length) % employees.length);
+  const prev = () => setIndex((i) => (i - 1 + employees.length) % employees.length);
+  const next = () => setIndex((i) => (i + 1) % employees.length);
+  const goTo = (i: number) => setIndex(i % employees.length);
+
+  // lightbox helpers
+  const openLightbox = (i: number) => setLightboxIndex(i);
+  const closeLightbox = () => setLightboxIndex(null);
+  const lightboxPrev = (e?: React.SyntheticEvent) => {
+    e?.stopPropagation();
+    if (lightboxIndex === null) return;
+    setLightboxIndex((idx) => (idx! - 1 + gallery.length) % gallery.length);
+  };
+  const lightboxNext = (e?: React.SyntheticEvent) => {
+    e?.stopPropagation();
+    if (lightboxIndex === null) return;
+    setLightboxIndex((idx) => (idx! + 1) % gallery.length);
   };
 
-  // Move to next (wraps)
-  const next = () => {
-    setIndex((i) => (i + 1) % employees.length);
-  };
-
-  // Jump to a specific slide
-  const goTo = (i: number) => {
-    setIndex(i % employees.length);
-  };
+  // keyboard handling & body scroll lock for lightbox
+  useEffect(() => {
+    const onKey = (ev: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      if (ev.key === "Escape") closeLightbox();
+      if (ev.key === "ArrowLeft") setLightboxIndex((idx) => (idx! - 1 + gallery.length) % gallery.length);
+      if (ev.key === "ArrowRight") setLightboxIndex((idx) => (idx! + 1) % gallery.length);
+    };
+    document.addEventListener("keydown", onKey);
+    // prevent background scroll when lightbox open
+    const prevOverflow = document.body.style.overflow;
+    if (lightboxIndex !== null) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = prevOverflow;
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIndex, gallery.length]);
 
   return (
       <div className="min-h-screen pt-20">
@@ -151,6 +196,113 @@ export default function About(): JSX.Element {
             </div>
           </div>
         </section>
+
+        {/* Swiper Coverflow Gallery (below Our Story) */}
+        <section className="py-16 bg-background">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <h4 className="text-2xl font-semibold mb-8">Our Gallery</h4>
+
+            <div className="w-full flex justify-center">
+              <Swiper
+                  effect={"coverflow"}
+                  grabCursor={true}
+                  centeredSlides={true}
+                  slidesPerView={"auto"}
+                  spaceBetween={60}
+                  coverflowEffect={{
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 220,
+                    modifier: 1.7,
+                    slideShadows: false,
+                  }}
+                  pagination={{ clickable: true }}
+                  navigation={true}
+                  modules={[EffectCoverflow, Pagination, Navigation]}
+                  className="w-full max-w-7xl"
+                  onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+              >
+                {gallery.map((src, i) => (
+                    <SwiperSlide
+                        key={i}
+                        style={{
+                          width: "50vw",
+                          maxWidth: "1100px",
+                          height: "auto",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                    >
+                      {/* Landscape aspect container (16:9) with larger minHeight */}
+                      <div
+                          className={`relative w-full rounded-2xl overflow-hidden transform transition-all duration-500 ${
+                              activeIndex === i ? "scale-105 shadow-2xl" : "scale-95 opacity-85"
+                          } hover:scale-105 cursor-pointer`}
+                          style={{ aspectRatio: "16/9", minHeight: 360 }}
+                          onClick={() => openLightbox(i)}
+                      >
+                        <img
+                            src={src}
+                            alt={`gallery-${i}`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                      </div>
+                    </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            <p className="mt-6 text-sm text-muted-foreground">Click an image to view fullscreen. Use arrow keys or swipe inside to navigate.</p>
+          </div>
+        </section>
+
+        {/* Lightbox Modal */}
+        {lightboxIndex !== null && (
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+                onClick={() => closeLightbox()}
+                role="dialog"
+                aria-modal="true"
+            >
+              {/* Prev button */}
+              <button
+                  onClick={(e) => lightboxPrev(e)}
+                  className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-3 hover:bg-black/40 text-white z-50"
+                  aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              {/* Next button */}
+              <button
+                  onClick={(e) => lightboxNext(e)}
+                  className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-3 hover:bg-black/40 text-white z-50"
+                  aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+
+              <div className="max-w-[95vw] max-h-[95vh] flex items-center justify-center">
+                <img
+                    src={gallery[lightboxIndex]}
+                    alt={`lightbox-${lightboxIndex}`}
+                    className="max-w-full max-h-full rounded-lg shadow-2xl"
+                    onClick={(e) => e.stopPropagation()} // don't close when clicking image
+                />
+              </div>
+
+              {/* Close button */}
+              <button
+                  onClick={() => closeLightbox()}
+                  className="absolute top-6 right-6 text-white text-2xl rounded-md bg-black/30 px-3 py-1 hover:bg-black/40 z-50"
+                  aria-label="Close lightbox"
+              >
+                ✕
+              </button>
+            </div>
+        )}
 
         {/* Stats Section */}
         <section className="py-24 gradient-hero">
@@ -232,7 +384,6 @@ export default function About(): JSX.Element {
               >
                 {employees.map((emp, i) => {
                   const imgMode = emp.id === "emp-1" ? "object-cover object-left-bottom" : "object-contain";
-
                   return (
                       <div
                           key={emp.id}
@@ -240,13 +391,8 @@ export default function About(): JSX.Element {
                           style={{ width: `${100 / employees.length}%` }}
                       >
                         <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg mb-6">
-                          <img
-                              src={emp.avatar}
-                              alt={emp.name}
-                              className={`w-full h-full ${imgMode} block`}
-                          />
+                          <img src={emp.avatar} alt={emp.name} className={`w-full h-full ${imgMode} block`} />
                         </div>
-
                         <h3 className="text-2xl font-semibold">{emp.name}</h3>
                         <p className="text-primary font-medium">{emp.designation}</p>
                         <p className="mt-4 max-w-lg text-muted-foreground text-justify">{emp.role}</p>
@@ -258,21 +404,22 @@ export default function About(): JSX.Element {
                                   rel="noopener noreferrer"
                                   className="px-4 py-2 bg-primary text-white rounded-md hover:brightness-95"
                               >
-                                Watch Intro
+                                Info
                               </a>
                           ) : (
                               <button className="px-4 py-2 bg-slate-200 text-slate-600 rounded-md" disabled>
                                 No Intro
                               </button>
                           )}
-                          <a href="#contact" className="px-4 py-2 border border-slate-200 rounded-md hover:bg-slate-50">Contact</a>
+                          <a href="#contact" className="px-4 py-2 border border-slate-200 rounded-md hover:bg-slate-50">
+                            Contact
+                          </a>
                         </div>
                       </div>
                   );
                 })}
               </div>
 
-              {/* Dots */}
               <div className="flex justify-center mt-8 gap-3">
                 {employees.map((_, i) => (
                     <button
