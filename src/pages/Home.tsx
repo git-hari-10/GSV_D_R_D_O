@@ -14,10 +14,10 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-import bg1 from "@/assets/homeback_plane.png";
-import bg2 from "@/assets/hexacopter.png";
-import bg3 from "@/assets/background_quadcopter.png";
-import productImage from "@/assets/product-drone.jpg";
+import bg1 from "@/assets/Home/homeback_plane.png";
+import bg2 from "@/assets/Home/hexacopter.png";
+import bg3 from "@/assets/Home/background_quadcopter.png";
+import productImage from "@/assets/Home/product-drone.jpg";
 
 export default function Home(): JSX.Element {
   const features = [
@@ -29,7 +29,6 @@ export default function Home(): JSX.Element {
     { icon: Settings, title: "AI-Powered", description: "Intelligent flight patterns and automated navigation" },
   ];
 
-  // Slider setup
   const slides = [bg1, bg2, bg3];
   const extendedSlides = [slides[slides.length - 1], ...slides, slides[0]];
   const [index, setIndex] = useState<number>(1);
@@ -46,7 +45,6 @@ export default function Home(): JSX.Element {
   }, []);
 
   const startAutoplay = () => {
-    stopAutoplay();
     intervalRef.current = window.setInterval(() => {
       setIndex((i) => i + 1);
       setIsTransitioning(true);
