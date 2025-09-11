@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Award, Globe, Target, ChevronLeft, ChevronRight } from "lucide-react";
+
 // Employee profile imports
 import aboutImage from "@/assets/About/about.png";
 import droneSupportEngineer from "@/assets/About/Selvam.png";
@@ -10,6 +11,7 @@ import associateSoftwareDev from "@/assets/About/krithika.png";
 import droneSupportEngineer2 from "@/assets/About/kumaran.png";
 import hardwareLead from "@/assets/About/thanigai.png";
 import founder from "@/assets/About/vasanth.png";
+
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
@@ -17,6 +19,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
 // Gallery imports (your provided files)
 import gallery1 from "@/assets/About/Galleryassests/IMG_2299 (2).jpg";
 import gallery2 from "@/assets/About/Galleryassests/IMG_2303 (2).jpg";
