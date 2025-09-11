@@ -1,21 +1,21 @@
 import React, { useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Award, Globe, Target, ChevronLeft, ChevronRight } from "lucide-react";
-import aboutImage from "@/assets/about-lab.jpg";
-
-/**
- * Note:
- * - Replace the image/video paths in `employees` with your actual imported assets if you prefer bundling:
- *   import emp1 from "@/assets/team1.jpg";
- *   then use avatar: emp1
- */
+import aboutImage from "@/assets/About/about.png";
+import droneSupportEngineer from "@/assets/About/Selvam.png";
+import gcsSoftwareDev from "@/assets/About/Harish.png";
+import coOrdinator from "@/assets/About/ezhil.png";
+import associateSoftwareDev from "@/assets/About/krithika.png";
+import droneSupportEngineer2 from "@/assets/About/kumaran.png";
+import hardwareLead from "@/assets/About/thanigai.png";
+import founder from "@/assets/About/vasanth.png";
 
 type Person = {
   id: string;
   name: string;
   designation: string;
   role: string;
-  avatar: string; // url or imported path
+  avatar: string;
   videoUrl?: string;
 };
 
@@ -34,38 +34,61 @@ export default function About(): JSX.Element {
     { icon: Globe, title: "Global Impact", description: "Making the world more connected and efficient through drone technology." },
   ];
 
-  // --- Replace these with your real assets or imports if available ---
   const employees: Person[] = [
     {
       id: "emp-1",
-      name: "Mr. G. Subramani",
-      designation: "Father • Certified Pilot",
-      role: "DGCA-certified Small & Medium Rotorcraft Pilot, bringing agricultural expertise to drone operations.",
-      avatar: "/employees/father.jpg",
-      videoUrl: "/employees/father-intro.mp4",
-    },
-    {
-      id: "emp-2",
-      name: "Mrs. S. Chitra",
-      designation: "Mother • Certified Pilot",
-      role: "DGCA-certified Small & Medium Rotorcraft Pilot, passionate about drone literacy for women in rural areas.",
-      avatar: "/employees/mother.jpg",
+      name: "Mr. S. Vasanth",
+      designation: "Founder • GSV Drones",
+      role: "Founder of GSV Drone Family, leading R&D initiatives and building innovative UAV solutions.",
+      avatar: `${founder}`,
       videoUrl: "/employees/mother-intro.mp4",
     },
     {
+      id: "emp-2",
+      name: "Mr. P. Selvam",
+      designation: "Employee • Drone Product Support Engineer",
+      role: "Our Drone Product Support Engineers deliver specialized technical expertise to ensure optimal performance, reliability, and compliance of drone systems, while providing precise solutions to customer challenges.",
+      avatar: `${droneSupportEngineer}`,
+      videoUrl: "/employees/father-intro.mp4",
+    },
+    {
       id: "emp-3",
-      name: "Ms. S. Deepika",
-      designation: "Sister • Drone Instructor",
-      role: "DGCA-certified Drone Instructor, training the next generation of drone pilots with hands-on programs.",
-      avatar: "/employees/sister.jpg",
+      name: "Ms. R. Krithika",
+      designation: "Employee • Associate Software Engineer",
+      role: "Our Associate Software Engineers contribute to the design, development, and testing of innovative software solutions. They collaborate with senior engineers to deliver reliable, scalable, and high-quality applications.",
+      avatar: `${associateSoftwareDev}`,
       videoUrl: "/employees/sister-intro.mp4",
     },
     {
       id: "emp-4",
-      name: "Mr. S. Vasanth",
-      designation: "Son • Drone Engineer",
-      role: "Founder of GSV Drone Family, leading R&D initiatives and building innovative UAV solutions.",
-      avatar: "/employees/vasanth.jpg",
+      name: "Mr. A. Harish",
+      designation: "Employee • GCS Software Dev Lead Engineer",
+      role: "Our GCS Software Development Lead Engineers design and drive advanced ground control station solutions, ensuring seamless command, control, and monitoring of drone operations. They lead innovation to deliver reliable, user-friendly, and mission-ready software systems.",
+      avatar: `${gcsSoftwareDev}`,
+      videoUrl: "/employees/vasanth-intro.mp4",
+    },
+    {
+      id: "emp-5",
+      name: "Mr. R. Kumaran",
+      designation: "Employee • Drone Product Support Engineer",
+      role: "Our Drone Product Support Engineers deliver specialized technical expertise to ensure optimal performance, reliability, and compliance of drone systems, while providing precise solutions to customer challenges.",
+      avatar: `${droneSupportEngineer2}`,
+      videoUrl: "/employees/vasanth-intro.mp4",
+    },
+    {
+      id: "emp-6",
+      name: "Mr. M. Thanigaivel",
+      designation: "Employee • Drone Hardware Team Lead Engineer",
+      role: "Our Drone Hardware Team Lead Engineers drive the design, development, and integration of advanced drone hardware systems. They lead teams to deliver reliable, high-performance solutions that power safe and innovative aerial operations.",
+      avatar: `${hardwareLead}`,
+      videoUrl: "/employees/vasanth-intro.mp4",
+    },
+    {
+      id: "emp-7",
+      name: "Mr. K. Ezhilarasu",
+      designation: "Employee • Drone Project Co-ordination Engineer",
+      role: "Our Drone Project Coordination Engineers oversee end-to-end project execution, ensuring timelines, resources, and deliverables are aligned. They bridge technical teams and stakeholders to drive efficient, successful drone deployments.",
+      avatar: `${coOrdinator}`,
       videoUrl: "/employees/vasanth-intro.mp4",
     },
   ];
@@ -207,33 +230,46 @@ export default function About(): JSX.Element {
                     transitionDuration: `${transitionMs}ms`,
                   }}
               >
-                {employees.map((emp, i) => (
-                    <div
-                        key={emp.id}
-                        className="w-full flex-shrink-0 flex flex-col items-center px-6 text-center"
-                        style={{ width: `${100 / employees.length}%` }}
-                    >
-                      <img src={emp.avatar} className="w-40 h-40 rounded-full object-cover shadow-lg mb-6" />
-                      <h3 className="text-2xl font-semibold">{emp.name}</h3>
-                      <p className="text-primary font-medium">{emp.designation}</p>
-                      <p className="mt-4 max-w-lg text-muted-foreground">{emp.role}</p>
-                      <div className="mt-6 flex gap-3">
-                        {emp.videoUrl ? (
-                            <a
-                                href={emp.videoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-2 bg-primary text-white rounded-md hover:brightness-95"
-                            >
-                              Watch Intro
-                            </a>
-                        ) : (
-                            <button className="px-4 py-2 bg-slate-200 text-slate-600 rounded-md" disabled>No Intro</button>
-                        )}
-                        <a href="#contact" className="px-4 py-2 border border-slate-200 rounded-md hover:bg-slate-50">Contact</a>
+                {employees.map((emp, i) => {
+                  const imgMode = emp.id === "emp-1" ? "object-cover object-left-bottom" : "object-contain";
+
+                  return (
+                      <div
+                          key={emp.id}
+                          className="w-full flex-shrink-0 flex flex-col items-center px-6 text-center"
+                          style={{ width: `${100 / employees.length}%` }}
+                      >
+                        <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg mb-6">
+                          <img
+                              src={emp.avatar}
+                              alt={emp.name}
+                              className={`w-full h-full ${imgMode} block`}
+                          />
+                        </div>
+
+                        <h3 className="text-2xl font-semibold">{emp.name}</h3>
+                        <p className="text-primary font-medium">{emp.designation}</p>
+                        <p className="mt-4 max-w-lg text-muted-foreground text-justify">{emp.role}</p>
+                        <div className="mt-6 flex gap-3">
+                          {emp.videoUrl ? (
+                              <a
+                                  href={emp.videoUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-4 py-2 bg-primary text-white rounded-md hover:brightness-95"
+                              >
+                                Watch Intro
+                              </a>
+                          ) : (
+                              <button className="px-4 py-2 bg-slate-200 text-slate-600 rounded-md" disabled>
+                                No Intro
+                              </button>
+                          )}
+                          <a href="#contact" className="px-4 py-2 border border-slate-200 rounded-md hover:bg-slate-50">Contact</a>
+                        </div>
                       </div>
-                    </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Dots */}
