@@ -46,7 +46,7 @@ export default function About(): JSX.Element {
     { label: "Years of Experience", value: "0" },
     { label: "Drones Deployed", value: "0" },
     { label: "Countries Served", value: "0" },
-    { label: "Team Members", value: "0" },
+    { label: "Team Members", value: "10" },
   ];
 
   const values = [

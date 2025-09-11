@@ -158,8 +158,8 @@ export default function Careers() {
               Find your next opportunity with us
             </p>
           </div>
-          
-          <div className="space-y-6">
+
+          {/*<div className="space-y-6">
             {openings.map((job, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
@@ -195,7 +195,7 @@ export default function Careers() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div>*/}
         </div>
       </section>
 
