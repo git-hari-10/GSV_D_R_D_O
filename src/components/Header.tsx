@@ -23,7 +23,7 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
-            <img src={logo} alt="Company logo" className="w-10 h-10 rounded-full" />
+            <img src={logo} alt="Company logo" className="w-12 h-12 rounded-full" />
             <span className="text-xl font-bold text-foreground">GSV Drones</span>
           </Link>
         </div>

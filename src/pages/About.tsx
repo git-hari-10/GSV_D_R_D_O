@@ -20,7 +20,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// Gallery imports (your provided files)
+// Gallery imports
 import gallery1 from "@/assets/About/Galleryassests/IMG_2299 (2).jpg";
 import gallery2 from "@/assets/About/Galleryassests/IMG_2303 (2).jpg";
 import gallery3 from "@/assets/About/Galleryassests/working1.jpg";
@@ -31,6 +31,9 @@ import gallery7 from "@/assets/About/Galleryassests/IMG_2316 (2).jpg";
 import gallery8 from "@/assets/About/Galleryassests/IMG_2317 (2).jpg";
 import gallery9 from "@/assets/About/Galleryassests/IMG_2324 (2).jpg";
 import gallery10 from "@/assets/About/Galleryassests/IMG_2324 (3).jpg";
+
+// Video import
+import introVideo from "@/assets/About/videos/Introvideo.mp4";
 
 type Person = {
   id: string;
@@ -62,7 +65,7 @@ export default function About(): JSX.Element {
       name: "Mr. S. Vasanth",
       designation: "Founder • GSV Drones",
       role: "Founder of GSV Drone Family, spearheading research and development in advanced aerial technologies. Leading the creation of innovative UAV solutions that shape the future of drone applications.",
-      avatar: `${founder}`,
+      avatar: founder,
       videoUrl: "/employees/mother-intro.mp4",
     },
     {
@@ -70,7 +73,7 @@ export default function About(): JSX.Element {
       name: "Mr. P. Selvam",
       designation: "Employee • Drone Product Support Engineer",
       role: "Our Drone Product Support Engineers deliver specialized technical expertise to ensure optimal performance, reliability, and compliance of drone systems, while providing precise solutions to customer challenges.",
-      avatar: `${droneSupportEngineer}`,
+      avatar: droneSupportEngineer,
       videoUrl: "/employees/father-intro.mp4",
     },
     {
@@ -78,7 +81,7 @@ export default function About(): JSX.Element {
       name: "Ms. R. Krithika",
       designation: "Employee • Associate Software Engineer",
       role: "Our Associate Software Engineers contribute to the design, development, and testing of innovative software solutions. They collaborate with senior engineers to deliver reliable, scalable, and high-quality applications.",
-      avatar: `${associateSoftwareDev}`,
+      avatar: associateSoftwareDev,
       videoUrl: "/employees/sister-intro.mp4",
     },
     {
@@ -86,7 +89,7 @@ export default function About(): JSX.Element {
       name: "Mr. A. Harish",
       designation: "Employee • GCS Software Dev Lead Engineer",
       role: "Our GCS Software Development Lead Engineers design and drive advanced ground control station solutions, ensuring seamless command, control, and monitoring of drone operations. They lead innovation to deliver reliable, user-friendly, and mission-ready software systems.",
-      avatar: `${gcsSoftwareDev}`,
+      avatar: gcsSoftwareDev,
       videoUrl: "/employees/vasanth-intro.mp4",
     },
     {
@@ -94,7 +97,7 @@ export default function About(): JSX.Element {
       name: "Mr. R. Kumaran",
       designation: "Employee • Drone Product Support Engineer",
       role: "Our Drone Product Support Engineers deliver specialized technical expertise to ensure optimal performance, reliability, and compliance of drone systems, while providing precise solutions to customer challenges.",
-      avatar: `${droneSupportEngineer2}`,
+      avatar: droneSupportEngineer2,
       videoUrl: "/employees/vasanth-intro.mp4",
     },
     {
@@ -102,7 +105,7 @@ export default function About(): JSX.Element {
       name: "Mr. M. Thanigaivel",
       designation: "Employee • Drone Hardware Team Lead Engineer",
       role: "Our Drone Hardware Team Lead Engineers drive the design, development, and integration of advanced drone hardware systems. They lead teams to deliver reliable, high-performance solutions that power safe and innovative aerial operations.",
-      avatar: `${hardwareLead}`,
+      avatar: hardwareLead,
       videoUrl: "/employees/vasanth-intro.mp4",
     },
     {
@@ -110,18 +113,18 @@ export default function About(): JSX.Element {
       name: "Mr. K. Ezhilarasu",
       designation: "Employee • Drone Project Co-ordination Engineer",
       role: "Our Drone Project Coordination Engineers oversee end-to-end project execution, ensuring timelines, resources, and deliverables are aligned. They bridge technical teams and stakeholders to drive efficient, successful drone deployments.",
-      avatar: `${coOrdinator}`,
+      avatar: coOrdinator,
       videoUrl: "/employees/vasanth-intro.mp4",
     },
   ];
 
-  // gallery array using your imports
+  // gallery array
   const gallery = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10];
 
-  // Swiper / manual carousel state
-  const [index, setIndex] = useState<number>(0); // for manual employee carousel (left as-is)
-  const [activeIndex, setActiveIndex] = useState<number>(0); // active slide in swiper
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null); // null = closed
+  // states for carousels + lightbox
+  const [index, setIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const transitionMs = 600;
 
@@ -129,21 +132,9 @@ export default function About(): JSX.Element {
   const next = () => setIndex((i) => (i + 1) % employees.length);
   const goTo = (i: number) => setIndex(i % employees.length);
 
-  // lightbox helpers
   const openLightbox = (i: number) => setLightboxIndex(i);
   const closeLightbox = () => setLightboxIndex(null);
-  const lightboxPrev = (e?: React.SyntheticEvent) => {
-    e?.stopPropagation();
-    if (lightboxIndex === null) return;
-    setLightboxIndex((idx) => (idx! - 1 + gallery.length) % gallery.length);
-  };
-  const lightboxNext = (e?: React.SyntheticEvent) => {
-    e?.stopPropagation();
-    if (lightboxIndex === null) return;
-    setLightboxIndex((idx) => (idx! + 1) % gallery.length);
-  };
 
-  // keyboard handling & body scroll lock for lightbox
   useEffect(() => {
     const onKey = (ev: KeyboardEvent) => {
       if (lightboxIndex === null) return;
@@ -152,7 +143,6 @@ export default function About(): JSX.Element {
       if (ev.key === "ArrowRight") setLightboxIndex((idx) => (idx! + 1) % gallery.length);
     };
     document.addEventListener("keydown", onKey);
-    // prevent background scroll when lightbox open
     const prevOverflow = document.body.style.overflow;
     if (lightboxIndex !== null) document.body.style.overflow = "hidden";
     else document.body.style.overflow = prevOverflow;
@@ -200,7 +190,7 @@ export default function About(): JSX.Element {
           </div>
         </section>
 
-        {/* Swiper Coverflow Gallery (below Our Story) */}
+        {/* Swiper Gallery */}
         <section className="py-16 bg-background">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <h4 className="text-2xl font-semibold mb-8">Our Gallery</h4>
@@ -237,7 +227,6 @@ export default function About(): JSX.Element {
                           justifyContent: "center",
                         }}
                     >
-                      {/* Landscape aspect container (16:9) with larger minHeight */}
                       <div
                           className={`relative w-full rounded-2xl overflow-hidden transform transition-all duration-500 ${
                               activeIndex === i ? "scale-105 shadow-2xl" : "scale-95 opacity-85"
@@ -245,12 +234,7 @@ export default function About(): JSX.Element {
                           style={{ aspectRatio: "16/9", minHeight: 360 }}
                           onClick={() => openLightbox(i)}
                       >
-                        <img
-                            src={src}
-                            alt={`gallery-${i}`}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                        />
+                        <img src={src} alt={`gallery-${i}`} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                     </SwiperSlide>
                 ))}
@@ -261,7 +245,7 @@ export default function About(): JSX.Element {
           </div>
         </section>
 
-        {/* Lightbox Modal */}
+        {/* Lightbox */}
         {lightboxIndex !== null && (
             <div
                 className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
@@ -269,18 +253,22 @@ export default function About(): JSX.Element {
                 role="dialog"
                 aria-modal="true"
             >
-              {/* Prev button */}
               <button
-                  onClick={(e) => lightboxPrev(e)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((idx) => (idx! - 1 + gallery.length) % gallery.length);
+                  }}
                   className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-3 hover:bg-black/40 text-white z-50"
                   aria-label="Previous image"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
-              {/* Next button */}
               <button
-                  onClick={(e) => lightboxNext(e)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((idx) => (idx! + 1) % gallery.length);
+                  }}
                   className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-3 hover:bg-black/40 text-white z-50"
                   aria-label="Next image"
               >
@@ -292,11 +280,10 @@ export default function About(): JSX.Element {
                     src={gallery[lightboxIndex]}
                     alt={`lightbox-${lightboxIndex}`}
                     className="max-w-full max-h-full rounded-lg shadow-2xl"
-                    onClick={(e) => e.stopPropagation()} // don't close when clicking image
+                    onClick={(e) => e.stopPropagation()}
                 />
               </div>
 
-              {/* Close button */}
               <button
                   onClick={() => closeLightbox()}
                   className="absolute top-6 right-6 text-white text-2xl rounded-md bg-black/30 px-3 py-1 hover:bg-black/40 z-50"
@@ -346,6 +333,25 @@ export default function About(): JSX.Element {
           </div>
         </section>
 
+        {/* Video Section */}
+        <section className="py-24 bg-muted">
+          <div className="max-w-6xl mx-auto px-6 text-center">
+            <h2 className="text-4xl font-bold mb-8">Our Journey in Motion</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Watch our story unfold — innovation, passion, and dedication captured in every frame.
+            </p>
+
+            <div className="relative rounded-xl overflow-hidden shadow-2xl">
+              <video
+                  src={introVideo}
+                  controls
+                  className="w-full h-auto rounded-xl bg-black"
+                  preload="metadata"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Mission Section */}
         <section className="py-24 bg-muted">
           <div className="max-w-5xl mx-auto px-6 text-center">
@@ -356,7 +362,7 @@ export default function About(): JSX.Element {
           </div>
         </section>
 
-        {/* Employees (manual carousel) */}
+        {/* Employees Section */}
         <section className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex items-center justify-between mb-8">
