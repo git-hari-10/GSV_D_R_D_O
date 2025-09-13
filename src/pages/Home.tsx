@@ -14,10 +14,10 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-import bg1 from "@/assets/homeback_plane.png";
-import bg2 from "@/assets/hexacopter.png";
-import bg3 from "@/assets/background_quadcopter.png";
-import productImage from "@/assets/product-drone.jpg";
+import bg1 from "@/assets/Home/homeback_plane.png";
+import bg2 from "@/assets/Home/hexacopter.png";
+import bg3 from "@/assets/Home/background_quadcopter.png";
+import productImage from "@/assets/Home/product-drone.jpg";
 
 export default function Home(): JSX.Element {
   const features = [
@@ -29,7 +29,6 @@ export default function Home(): JSX.Element {
     { icon: Settings, title: "AI-Powered", description: "Intelligent flight patterns and automated navigation" },
   ];
 
-  // Slider setup
   const slides = [bg1, bg2, bg3];
   const extendedSlides = [slides[slides.length - 1], ...slides, slides[0]];
   const [index, setIndex] = useState<number>(1);
@@ -46,7 +45,6 @@ export default function Home(): JSX.Element {
   }, []);
 
   const startAutoplay = () => {
-    stopAutoplay();
     intervalRef.current = window.setInterval(() => {
       setIndex((i) => i + 1);
       setIsTransitioning(true);
@@ -132,7 +130,7 @@ export default function Home(): JSX.Element {
           <div className="relative z-20 max-w-4xl mx-auto px-6 hero-section-content">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
               <span className="block animated-gradient-text">Research &amp; Development</span>
-              <span className="block text-white/95 drop-shadow-lg">(R&amp;D) Organization</span>
+              <span className="block text-white/95 drop-shadow-lg">R&amp;D Organization</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-white/85 mb-8 max-w-2xl mx-auto text-justify">
               Professional drones engineered for commercial applications, surveillance, and precision agriculture.
@@ -143,13 +141,14 @@ export default function Home(): JSX.Element {
                   Explore Products <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button
+              {/* Watch Demo Button */}
+              {/* <Button
                   size="lg"
                   variant="outline"
                   className="px-8 py-4 border-white text-white hover:bg-white hover:text-primary"
               >
                 Watch Demo
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -265,13 +264,14 @@ export default function Home(): JSX.Element {
                   Get In Touch
                 </Button>
               </Link>
-              <Button
+              {/* Request Demo Button commented out */}
+              {/* <Button
                   size="lg"
                   variant="outline"
                   className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-primary"
               >
                 Request Demo
-              </Button>
+              </Button> */}
             </div>
           </div>
         </section>

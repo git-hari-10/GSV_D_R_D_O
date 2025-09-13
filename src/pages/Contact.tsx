@@ -116,10 +116,10 @@ export default function Contact() {
                       className="min-h-[120px]"
                     />
                   </div>
-                  
-                  <Button size="lg" className="w-full">
+                  {/* Send Message Button hided */}
+                  {/*<Button size="lg" className="w-full">
                     Send Message
-                  </Button>
+                  </Button>*/}
                 </CardContent>
               </Card>
             </div>
