@@ -61,8 +61,8 @@ export default function Products() {
     },
     {
       name: "GSV MiniQuad",
-      category: "Agriculture",
-      price: "Not Listed",
+      category: "Industrial",
+      price: "$Not Listed",
       image: product5,
       features: ["Spray System", "Multispectral", "50min Flight Time", "Precision RTK"],
       specs: {
@@ -103,7 +103,7 @@ export default function Products() {
     },
     {
       name: "GSV Quadcopter",
-      category: "Professional",
+      category: "Agriculture",
       price: "$Not Listed",
       image: product8,
       features: ["Agile Flight", "30min Endurance", "FPV Ready", "Low-latency Link"],
@@ -179,7 +179,6 @@ export default function Products() {
               {products.map((product, index) => (
                   <Card key={index} className="overflow-hidden border border-slate-200 shadow-xl bg-white">
                     {/* Image / visual area */}
-                    {/* Image / visual area with hover zoom + contain fit */}
                     <div className="relative w-full overflow-hidden rounded-t-lg bg-white aspect-[16/9] group flex items-center justify-center">
                       <img
                           src={product.image}
