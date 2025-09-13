@@ -1,6 +1,5 @@
 import { Briefcase } from "lucide-react";
-import careersImg from "@/assets/Carrers/careers-page.png"; // <-- Replace with your careers image
-import { Button } from "@/components/ui/button";
+import careersImg from "@/assets/Carrers/careers-page.png";
 
 // Job type definition
 type Job = {
